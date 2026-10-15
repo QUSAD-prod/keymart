@@ -338,58 +338,28 @@ input {
     padding: 72px 0 43px;
 }
 
-.reviews_radio {
-    display: none;
-}
-
-.reviews_header {
-    display: flex;
-    justify-content: space-between;
-}
-
-.reviews_arrows {
-    margin-top: 56px;
-}
-
-.reviews_arrows_set {
-    display: none;
-    gap: 16px;
-}
-
-#reviews_slide_1:checked ~ .reviews_header .reviews_arrows_set_1,
-#reviews_slide_2:checked ~ .reviews_header .reviews_arrows_set_2,
-#reviews_slide_3:checked ~ .reviews_header .reviews_arrows_set_3 {
-    display: flex;
-}
-
-.reviews_arrow {
-    cursor: pointer;
-}
-
-.reviews_arrow:hover {
-    opacity: 0.5;
-}
-
-.reviews_arrow_disabled,
-.reviews_arrow_disabled:hover {
-    opacity: 0.25;
-    cursor: default;
-}
-
 .reviews_track {
     display: flex;
     gap: 20px;
     margin-top: 40px;
-    transform: translateX(-420px);
-    transition: transform 0.5s;
+    animation: reviews_slide 12s infinite;
 }
 
-#reviews_slide_1:checked ~ .reviews_track {
-    transform: translateX(0);
-}
+/* карточка 400px + отступ 20px = шаг 420px; в конце плавно возвращаемся к первому слайду */
 
-#reviews_slide_3:checked ~ .reviews_track {
-    transform: translateX(-840px);
+@keyframes reviews_slide {
+    0%, 25% {
+        transform: translateX(0);
+    }
+    33%, 58% {
+        transform: translateX(-420px);
+    }
+    66%, 91% {
+        transform: translateX(-840px);
+    }
+    100% {
+        transform: translateX(0);
+    }
 }
 
 .review_card {
