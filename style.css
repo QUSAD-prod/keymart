@@ -276,7 +276,7 @@ input {
 
 .achievement + .achievement {
     padding-left: 31px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 .achievement_value {
@@ -345,20 +345,25 @@ input {
     animation: reviews_slide 12s infinite;
 }
 
-/* карточка 400px + отступ 20px = шаг 420px; в конце плавно возвращаемся к первому слайду */
-
 @keyframes reviews_slide {
     0%, 25% {
         transform: translateX(0);
+        opacity: 1;
     }
     33%, 58% {
         transform: translateX(-420px);
+        opacity: 1;
     }
     66%, 91% {
         transform: translateX(-840px);
+        opacity: 1;
+    }
+    95%, 99% {
+        opacity: 0;
     }
     100% {
         transform: translateX(0);
+        opacity: 1;
     }
 }
 
