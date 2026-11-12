@@ -59,6 +59,18 @@ input {
 }
 
 
+/* Montserrat для логотипов и заголовков */
+
+.logo,
+.promo_title,
+.platform_name,
+.section_title,
+.footer_logo {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-weight: 800;
+}
+
+
 /* Шапка */
 
 .header {
@@ -79,9 +91,7 @@ input {
 
 .logo {
     width: 167px;
-    font-family: "Montserrat", Arial, sans-serif;
     font-size: 32px;
-    font-weight: 800;
     color: #dfdfdf;
 }
 
@@ -236,9 +246,7 @@ input {
 
 .promo_title {
     width: 715px;
-    font-family: "Montserrat", Arial, sans-serif;
     font-size: 56px;
-    font-weight: 800;
     line-height: 56px;
 }
 
@@ -276,7 +284,7 @@ input {
 
 .achievement + .achievement {
     padding-left: 31px;
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 2px solid rgba(255, 255, 255, 0.25);
 }
 
 .achievement_value {
@@ -316,18 +324,130 @@ input {
 }
 
 .platform_name {
-    font-family: "Montserrat", Arial, sans-serif;
     font-size: 25px;
-    font-weight: 800;
 }
 
 
 /* Заголовки секций */
 
 .section_title {
-    font-family: "Montserrat", Arial, sans-serif;
     font-size: 48px;
-    font-weight: 800;
+}
+
+
+/* Секции товаров */
+
+.products_section {
+    padding-top: 64px;
+}
+
+.products_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px 20px;
+    margin-top: 56px;
+}
+
+.product_card {
+    width: 295px;
+}
+
+.product_card_link {
+    display: block;
+}
+
+.product_card_image {
+    height: 295px;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: #f3f3f3;
+}
+
+.product_card_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.product_card_link:hover .product_card_image img {
+    transform: scale(1.04);
+}
+
+.product_card_title {
+    margin-top: 14px;
+    overflow: hidden;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.product_card_rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.product_card_stars {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.product_card_stars img {
+    width: 22px;
+    height: 21px;
+}
+
+.product_card_stars .product_star_half {
+    width: 11px;
+    height: 21px;
+}
+
+.product_card_rating_value {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.55);
+}
+
+.product_card_price {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.product_card_price_current {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.product_card_price_old {
+    font-size: 20px;
+    color: #999;
+    text-decoration: line-through;
+}
+
+/* Кнопка «Смотреть все» */
+
+.secondary_button {
+    display: block;
+    width: 216px;
+    margin: 48px auto 0;
+    padding: 16px 0;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 62px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.secondary_button:hover {
+    border-color: #000;
+    background-color: #000;
+    color: #fff;
 }
 
 
@@ -342,23 +462,50 @@ input {
     display: flex;
     gap: 20px;
     margin-top: 40px;
-    animation: reviews_slide 12s infinite;
+    animation: reviews_slide 30s infinite;
+    animation-timing-function: ease-in-out;
 }
 
-/* карточка 400px + отступ 20px = шаг 420px; в конце плавно возвращаемся к первому слайду */
+/* 9 карточек по 400px, на экране 3. Шаг — одна карточка: 400px + 20px = 420px.
+   7 положений: 0, -420, -840, -1260, -1680, -2100, -2520px.
+   Появление — до 2%, затухание — с 97% до 100%. */
 
 @keyframes reviews_slide {
-    0%, 25% {
+    0% {
         transform: translateX(0);
+        opacity: 0;
     }
-    33%, 58% {
+    2%, 13% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    16%, 26% {
         transform: translateX(-420px);
+        opacity: 1;
     }
-    66%, 91% {
+    29%, 39% {
         transform: translateX(-840px);
+        opacity: 1;
+    }
+    42%, 52% {
+        transform: translateX(-1260px);
+        opacity: 1;
+    }
+    55%, 65% {
+        transform: translateX(-1680px);
+        opacity: 1;
+    }
+    68%, 78% {
+        transform: translateX(-2100px);
+        opacity: 1;
+    }
+    81%, 97% {
+        transform: translateX(-2520px);
+        opacity: 1;
     }
     100% {
-        transform: translateX(0);
+        transform: translateX(-2520px);
+        opacity: 0;
     }
 }
 
@@ -421,9 +568,7 @@ input {
 }
 
 .footer_logo {
-    font-family: "Montserrat", Arial, sans-serif;
-    font-size: 33.455px;
-    font-weight: 800;
+    font-size: 33px;
 }
 
 .footer_slogan {
